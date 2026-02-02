@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sewing Hub | StitchMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">StitchMaster</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="garments.html">Garments</a>
+                <a href="unstitched.html">Unstitched</a>
+                <a href="sewing-hub.html">Sewing Hub</a>
+                <a href="machinery.html">Machinery</a>
+                <a href="about.html">About</a>
+                <a href="account.html">Account</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Sewing Hub</h1>
+        <p class="text-center">Your one-stop shop for threads, needles, and laces.</p>
+
+        <div class="hub-sections">
+            <div class="hub-card">
+                <div class="hub-icon"><i class="fas fa-spool"></i></div>
+                <img src="assets\images\threads.jpg" alt="Threads">
+                <h3>Threads</h3>
+                <p>Industrial strength and embroidery threads.</p>
+                <button class="btn" onclick="location.href='#threads'">Browse</button>
+            </div>
+            <div class="hub-card">
+                <div class="hub-icon"><i class="fas fa-needle"></i></div>
+                <img src="assets\images\needle.jpg" alt="Needles">
+                <h3>Needles</h3>
+                <p>From fine hand-sewing to heavy industrial needles.</p>
+                <button class="btn" onclick="location.href='#needles'">Browse</button>
+            </div>
+            <div class="hub-card">
+                <div class="hub-icon"><i class="fas fa-ribbon"></i></div>
+                <img src="assets\images\laces.jpg" alt="Laces & Trims">
+                <h3>Laces & Trims</h3>
+                <p>Intricate designs for elegant finishes.</p>
+                <button class="btn" onclick="location.href='#laces'">Browse</button>
+            </div>
+        </div>
+
+        <div id="threads" class="section-divider">
+            <h2 class="text-center">Premium Threads</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Thread">
+                    <div class="product-info">
+                        <h3>Poly-Cotton Thread Set</h3>
+                        <p class="price">$15.00</p>
+                        <button class="add-to-cart-btn" onclick="addToCart({id: 's1', name: 'Poly-Cotton Thread Set', price: 15})">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- More items... -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 StitchMaster Textiles. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

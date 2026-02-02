@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Dashboard | StitchMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">StitchMaster</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="garments.html">Garments</a>
+                <a href="unstitched.html">Unstitched</a>
+                <a href="sewing-hub.html">Sewing Hub</a>
+                <a href="machinery.html">Machinery</a>
+                <a href="about.html">About</a>
+                <a href="account.html">Account</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">User Dashboard</h1>
+        
+        <div class="dashboard-grid">
+            <aside class="dashboard-sidebar">
+                <ul>
+                    <li class="active"><i class="fas fa-user"></i> Profile</li>
+                    <li><i class="fas fa-box"></i> Orders</li>
+                    <li><i class="fas fa-heart"></i> Wishlist</li>
+                    <li><i class="fas fa-sign-out-alt"></i> Logout</li>
+                </ul>
+            </aside>
+            <section class="dashboard-content">
+                <div class="profile-card">
+                    <h2>Welcome back, Artisan!</h2>
+                    <p>Track your orders and manage your saved items below.</p>
+                </div>
+
+                <div class="order-history section-divider">
+                    <h3>Recent Orders</h3>
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#SM-9821</td>
+                                <td>Jan 15, 2026</td>
+                                <td><span class="status-delivered">Delivered</span></td>
+                                <td>$150.00</td>
+                            </tr>
+                            <tr>
+                                <td>#SM-9845</td>
+                                <td>Feb 01, 2026</td>
+                                <td><span class="status-pending">In Transit</span></td>
+                                <td>$45.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="wishlist section-divider">
+                    <h3>My Wishlist</h3>
+                    <div id="wishlist-container" class="product-grid">
+                        <p>You have no saved items yet.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 StitchMaster Textiles. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

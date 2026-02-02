@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StitchMaster Textiles | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">StitchMaster</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="garments.html">Garments</a>
+                <a href="unstitched.html">Unstitched</a>
+                <a href="sewing-hub.html">Sewing Hub</a>
+                <a href="machinery.html">Machinery</a>
+                <a href="about.html">About</a>
+                <a href="account.html">Account</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-slider">
+                <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1528901166007-3784c7dd3653?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                    <div class="slide-content">
+                        <h1>Trending Now: Premium Embroidery</h1>
+                        <p>Discover our new hand-stitched collection.</p>
+                        <a href="garments.html" class="btn">Shop Now</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                    <div class="slide-content">
+                        <h1>Elite Sewing Machines</h1>
+                        <p>Professional parts for industrial efficiency.</p>
+                        <a href="machinery.html" class="btn">Explore Parts</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Grid -->
+        <section class="container">
+            <div class="category-grid">
+                <div class="category-card" onclick="location.href='garments.html'">
+                    <div class="hero-slider1">
+                        <img src="assets/images/embroidery(2).jpg" alt="Garments">
+                        <img src="assets/images/Garments.jpeg" alt="Garments">
+                        <img src="assets/images/Garments(2).jpg" alt="Garments">
+                        <img src="assets/images/Embroidery.jpg" alt="Garments">
+                        <img src="assets/images/embroidery(3).webp" alt="Garments">
+                    </div>
+                    <div class="category-overlay">
+                        <h2>Garments & Embroidery</h2>
+                        <p>Finished Wear & Handiwork</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="location.href='unstitched.html'">
+                    <div class="hero-slider1">
+                        <img src="assets/images/unstitched(2).jpg" alt="Unstitched">
+                        <img src="assets/images/unstitched(3).jpg" alt="Unstitched">
+                        <img src="assets/images/unstitched(4).jpg" alt="Unstitched">
+                        <img src="assets/images/unstitched(5).jpg" alt="Unstitched">
+                    </div>
+                    <div class="category-overlay">
+                        <h2>Unstitched Collection</h2>
+                        <p>Fabrics & Suits</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="location.href='sewing-hub.html'">
+                    <div class="hero-slider1"></div>
+                    <img src="https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Sewing">
+                    <img src="assets/images/sewing-hub(2).jpg" alt="Sewing">
+                    <img src="assets/images/sewing-hub(3).jpg" alt="Sewing">
+                    <img src="assets/images/sewing-hub(4).jpg" alt="Sewing">
+                    <img src="assets/images/sewing-hub(5).jpg" alt="Sewing">
+                    </div>
+
+                    <div class="category-overlay">
+                        <h2>Sewing Hub</h2>
+                        <p>Industrial vs Domestic Materials</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="sales-ticker"></div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>StitchMaster</h3>
+                    <p>The heritage of craftsmanship and quality textiles.</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Newsletter</h3>
+                    <input type="email" placeholder="Enter your email">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 StitchMaster Textiles. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

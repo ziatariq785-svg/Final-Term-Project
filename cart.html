@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart & Checkout | StitchMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">StitchMaster</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="garments.html">Garments</a>
+                <a href="unstitched.html">Unstitched</a>
+                <a href="sewing-hub.html">Sewing Hub</a>
+                <a href="machinery.html">Machinery</a>
+                <a href="about.html">About</a>
+                <a href="account.html">Account</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Shopping Cart</h1>
+        
+        <div id="cart-view">
+            <div class="cart-table-container">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items">
+                        <!-- Items injected by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cart-summary">
+                <div class="currency-selector">
+                    <label>Currency:</label>
+                    <select id="currency-select" onchange="convertCurrency()">
+                        <option value="USD">USD ($)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="PKR">PKR (Rs.)</option>
+                    </select>
+                </div>
+                <div class="summary-details">
+                    <p>Subtotal: <span id="subtotal">$0.00</span></p>
+                    <p>Shipping (Est.): <span id="shipping-cost">$0.00</span></p>
+                    <hr>
+                    <h3>Total: <span id="total-price">$0.00</span></h3>
+                </div>
+                <button class="btn btn-checkout" onclick="startCheckout()">Proceed to Checkout</button>
+            </div>
+        </div>
+
+        <!-- Checkout Steps (Initially hidden) -->
+        <div id="checkout-view" style="display: none;">
+            <div class="checkout-steps">
+                <div class="step active" id="step-1">1. Shipping</div>
+                <div class="step" id="step-2">2. Payment</div>
+                <div class="step" id="step-3">3. Confirmation</div>
+            </div>
+
+            <form id="checkout-form" class="checkout-form">
+                <div id="form-step-1">
+                    <h3>Shipping Information</h3>
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="text" placeholder="Address" required>
+                    <div class="form-row">
+                        <input type="text" placeholder="City" required>
+                        <input type="text" placeholder="Zip Code" required>
+                    </div>
+                    <button type="button" class="btn" onclick="nextStep(2)">Next: Payment</button>
+                </div>
+
+                <div id="form-step-2" style="display: none;">
+                    <h3>Payment Method</h3>
+                    <input type="text" placeholder="Card Number" required>
+                    <div class="form-row">
+                        <input type="text" placeholder="MM/YY" required>
+                        <input type="text" placeholder="CVC" required>
+                    </div>
+                    <button type="button" class="btn" onclick="nextStep(3)">Complete Order</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 StitchMaster Textiles. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        let exchangeRates = { USD: 1, GBP: 0.78, EUR: 0.92, PKR: 280 };
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                const total = item.price * item.quantity;
+                subtotal += total;
+                container.innerHTML += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>$${item.price.toFixed(2)}</td>
+                        <td>
+                            <input type="number" value="${item.quantity}" min="1" onchange="updateQty(${index}, this.value)">
+                        </td>
+                        <td>$${total.toFixed(2)}</td>
+                        <td><i class="fas fa-trash" onclick="removeItem(${index})"></i></td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            calculateShipping(subtotal);
+        }
+
+        function calculateShipping(subtotal) {
+            // Mock Shipping API logic
+            const cost = subtotal > 0 ? (subtotal > 200 ? 0 : 25) : 0;
+            document.getElementById('shipping-cost').textContent = `$${cost.toFixed(2)}`;
+            const total = subtotal + cost;
+            document.getElementById('total-price').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function updateQty(index, qty) {
+            cart[index].quantity = parseInt(qty);
+            updateCartCount();
+            renderCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            renderCart();
+        }
+
+        function convertCurrency() {
+            const currency = document.getElementById('currency-select').value;
+            const rate = exchangeRates[currency];
+            const symbol = currency === 'GBP' ? '£' : (currency === 'EUR' ? '€' : (currency === 'PKR' ? 'Rs.' : '$'));
+            
+            // Re-render with converted values (simplified logic)
+            alert(`Prices converted to ${currency} using live-mock API (Rate: 1 USD = ${rate} ${currency})`);
+        }
+
+        function startCheckout() {
+            if (cart.length === 0) return alert('Your cart is empty!');
+            document.getElementById('cart-view').style.display = 'none';
+            document.getElementById('checkout-view').style.display = 'block';
+        }
+
+        function nextStep(step) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.getElementById(`step-${step}`).classList.add('active');
+
+            document.getElementById('form-step-1').style.display = 'none';
+            document.getElementById('form-step-2').style.display = 'none';
+            
+            if (step === 3) {
+                alert('Order Placed Successfully! Thank you for choosing StitchMaster.');
+                cart = [];
+                updateCartCount();
+                location.href = 'index.html';
+            } else {
+                document.getElementById(`form-step-${step}`).style.display = 'block';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+</body>
+</html>

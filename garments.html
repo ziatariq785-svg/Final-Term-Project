@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garments & Embroidery | StitchMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">StitchMaster</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="garments.html">Garments</a>
+                <a href="unstitched.html">Unstitched</a>
+                <a href="sewing-hub.html">Sewing Hub</a>
+                <a href="machinery.html">Machinery</a>
+                <a href="about.html">About</a>
+                <a href="account.html">Account</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Garments & Embroidery</h1>
+        <p>Explore our collection of finished wear and intricate handiwork.</p>
+
+        <div class="product-grid">
+            <!-- Product Item -->
+            <div class="product-card">
+                <div class="zoom-container">
+                    <img src="assets\images\silk embro shirt.jpg"alt="Embroidered Shirt" class="zoom-image">
+                </div>
+                <div class="product-info">
+                    <h3>Silk Embroidered Shirt</h3>
+                    <p class="price">$120.00</p>
+                    <button class="add-to-cart-btn" onclick="addToCart({id: 'g1', name: 'Silk Embroidered Shirt', price: 120})">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="zoom-container">
+                    <img src="assets\images\hand stiched scraf.jpg" alt="Hand-stitched Scarf" class="zoom-image">
+                </div>
+                <div class="product-info">
+                    <h3>Hand-stitched Scarf</h3>
+                    <p class="price">$45.00</p>
+                    <button class="add-to-cart-btn" onclick="addToCart({id: 'g2', name: 'Hand-stitched Scarf', price: 45})">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="zoom-container">
+                    <img src="assets\images\designer kurta.jpeg" alt="Designer Kurta" class="zoom-image">
+                </div>
+                <div class="product-info">
+                    <h3>Designer Kurta</h3>
+                    <p class="price">$150.00</p>
+                    <button class="add-to-cart-btn" onclick="addToCart({id: 'g3', name: 'Designer Kurta', price: 150})">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 StitchMaster Textiles. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

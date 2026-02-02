@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machinery Parts | StitchMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">StitchMaster</div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="garments.html">Garments</a>
+                <a href="unstitched.html">Unstitched</a>
+                <a href="sewing-hub.html">Sewing Hub</a>
+                <a href="machinery.html">Machinery</a>
+                <a href="about.html">About</a>
+                <a href="account.html">Account</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Machinery Parts & Finder</h1>
+        
+        <!-- Part Finder Tool -->
+        <section class="part-finder">
+            <h3><i class="fas fa-tools"></i> Part Finder</h3>
+            <p>Select your machine brand and model to find compatible parts.</p>
+            <div class="finder-controls">
+                <select id="brand-select" onchange="updateModels()">
+                    <option value="">Select Brand</option>
+                    <option value="singer">Singer</option>
+                    <option value="brother">Brother</option>
+                    <option value="juki">Juki</option>
+                </select>
+                <select id="model-select" disabled>
+                    <option value="">Select Model</option>
+                </select>
+                <button class="btn" onclick="findParts()">Find Parts</button>
+            </div>
+        </section>
+
+        <div id="parts-results" class="product-grid">
+            <!-- Results will be injected here -->
+        </div>
+
+        <section class="technical-catalog section-divider">
+            <h2>General Technical Catalog</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="part-image-wrapper">
+                        <img src="assets\images\Universal Servo Motor.webp" alt="Motor" class="part-img">
+                    </div>
+                    <div class="product-info">
+                        <h3>Universal Servo Motor</h3>
+                        <p>Serial: SM-400-X</p>
+                        <p class="price">$250.00</p>
+                        <button class="add-to-cart-btn" onclick="addToCart({id: 'm1', name: 'Universal Servo Motor', price: 250})">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 StitchMaster Textiles. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        const machineData = {
+            singer: {
+                models: ['Heavy Duty 4423', 'Quantum Stylist 9960', 'Tradition 2250'],
+                parts: [
+                    { name: 'Singer Bobbin Case', price: 12, img: 'assets/images/singer bobbin case.jpg' },
+                    { name: 'Singer Walking Foot', price: 25, img: 'assets/images/Singer Walking Foot.jpg' }
+                ]
+            },
+            brother: {
+                models: ['FS100WT', 'Innov-is A80', 'XR3774'],
+                parts: [
+                    { name: 'Brother Needle Plate', price: 18, img: 'assets/images/Brother Needle Plate.webp' },
+                    { name: 'Brother Tension Assembly', price: 30, img: 'assets/images/Brother Tension Assembly.jpg' }
+                ]
+            },
+            juki: {
+                models: ['TL-2010Q', 'HZL-F600', 'DDL-8700'],
+                parts: [
+                    { name: 'Juki Hook Assembly', price: 45, img: 'assets/images/Juki Hook Assembly.webp' },
+                    { name: 'Juki Feed Dog', price: 15, img: 'assets/images/Juki Feed Dog.jpg' }
+                ]
+            }
+        };
+
+        
+
+        function updateModels() {
+            const brand = document.getElementById('brand-select').value;
+            const modelSelect = document.getElementById('model-select');
+            modelSelect.innerHTML = '<option value="">Select Model</option>';
+            
+            if (brand && machineData[brand]) {
+                modelSelect.disabled = false;
+                machineData[brand].models.forEach(model => {
+                    const opt = document.createElement('option');
+                    opt.value = model;
+                    opt.textContent = model;
+                    modelSelect.appendChild(opt);
+                });
+            } else {
+                modelSelect.disabled = true;
+            }
+        }
+
+        function findParts() {
+            const brand = document.getElementById('brand-select').value;
+            const model = document.getElementById('model-select').value;
+            const resultsDiv = document.getElementById('parts-results');
+            
+            if (!brand || !model) {
+                alert('Please select both brand and model.');
+                return;
+            }
+
+            resultsDiv.innerHTML = '';
+            const parts = machineData[brand].parts;
+            
+            parts.forEach((part, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card fade-in';
+                card.innerHTML = `
+                    <div class="part-image-wrapper">
+                        <img src="${part.img}" alt="${part.name}" class="part-img">
+                    </div>
+                    <div class="product-info">
+                        <h3>${part.name}</h3>
+                        <p>Compatible with ${model}</p>
+                        <p class="price">$${part.price.toFixed(2)}</p>
+                        <button class="add-to-cart-btn" onclick="addToCart({id: 'part-${brand}-${index}', name: '${part.name}', price: ${part.price}})">Add to Cart</button>
+                    </div>
+                `;
+                resultsDiv.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
