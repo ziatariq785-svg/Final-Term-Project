@@ -6,7 +6,90 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
     initHeroSlider();
     initSalesTicker();
+    initMobileMenu();
+    initAccountDashboard();
+    initAuthCheck();
 });
+
+// Authentication Check
+function initAuthCheck() {
+    const isLoginPage = window.location.pathname.includes('login.html');
+    const isAccountPage = window.location.pathname.includes('account.html');
+    const isLoggedIn = localStorage.getItem('stitchmaster_logged_in') === 'true';
+
+    // Redirect if accessing account while logged out
+    if (isAccountPage && !isLoggedIn) {
+        window.location.href = 'login.html';
+    }
+
+    // Redirect if accessing login while already logged in
+    if (isLoginPage && isLoggedIn) {
+        window.location.href = 'account.html';
+    }
+
+    // Update Navigation Links
+    const accountLinks = document.querySelectorAll('a[href="account.html"], a[href="login.html"]');
+    accountLinks.forEach(link => {
+        if (isLoggedIn) {
+            link.href = 'account.html';
+            link.textContent = 'Account';
+        } else {
+            link.href = 'login.html';
+            link.textContent = 'Login';
+        }
+    });
+}
+
+// Account Dashboard Logic
+function initAccountDashboard() {
+    const sidebarItems = document.querySelectorAll('.dashboard-sidebar li[data-section]');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    if (sidebarItems.length > 0) {
+        sidebarItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const sectionId = item.getAttribute('data-section');
+
+                // Update Sidebar
+                sidebarItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                // Update Content
+                tabContents.forEach(tab => {
+                    tab.classList.remove('active');
+                    if (tab.id === `${sectionId}-section`) {
+                        tab.classList.add('active');
+                    }
+                });
+            });
+        });
+    }
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('stitchmaster_logged_in'); 
+                showNotification('Logging out...');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            }
+        });
+    }
+}
+
+// Mobile Menu Toggle
+function initMobileMenu() {
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+}
 
 // Cart Functions
 function updateCartCount() {

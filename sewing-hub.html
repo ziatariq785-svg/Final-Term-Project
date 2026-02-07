@@ -11,6 +11,9 @@
     <header>
         <div class="container nav-container">
             <div class="logo">StitchMaster</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
             <nav class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="garments.html">Garments</a>
@@ -18,7 +21,7 @@
                 <a href="sewing-hub.html">Sewing Hub</a>
                 <a href="machinery.html">Machinery</a>
                 <a href="about.html">About</a>
-                <a href="account.html">Account</a>
+                <a href="login.html">Login</a>
             </nav>
             <div class="nav-icons">
                 <a href="#"><i class="fas fa-search"></i></a>
@@ -30,8 +33,9 @@
         </div>
     </header>
 
-    <main class="container">
-        <h1 class="page-title">Sewing Hub</h1>
+    <main>
+        <div class="container">
+            <h1 class="page-title">Sewing Hub</h1>
         <p class="text-center">Your one-stop shop for threads, needles, and laces.</p>
 
         <div class="hub-sections">
@@ -40,21 +44,21 @@
                 <img src="assets\images\threads.jpg" alt="Threads">
                 <h3>Threads</h3>
                 <p>Industrial strength and embroidery threads.</p>
-                <button class="btn" onclick="location.href='#threads'">Browse</button>
+                <button class="btn" onclick="location.href='threads.html'">Browse</button>
             </div>
             <div class="hub-card">
                 <div class="hub-icon"><i class="fas fa-needle"></i></div>
                 <img src="assets\images\needle.jpg" alt="Needles">
                 <h3>Needles</h3>
                 <p>From fine hand-sewing to heavy industrial needles.</p>
-                <button class="btn" onclick="location.href='#needles'">Browse</button>
+                <button class="btn" onclick="location.href='needles.html'">Browse</button>
             </div>
             <div class="hub-card">
                 <div class="hub-icon"><i class="fas fa-ribbon"></i></div>
                 <img src="assets\images\laces.jpg" alt="Laces & Trims">
                 <h3>Laces & Trims</h3>
                 <p>Intricate designs for elegant finishes.</p>
-                <button class="btn" onclick="location.href='#laces'">Browse</button>
+                <button class="btn" onclick="location.href='laces.html'">Browse</button>
             </div>
         </div>
 
@@ -71,6 +75,7 @@
                 </div>
                 <!-- More items... -->
             </div>
+        </div>
         </div>
     </main>
 

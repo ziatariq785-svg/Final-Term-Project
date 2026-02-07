@@ -11,6 +11,9 @@
     <header>
         <div class="container nav-container">
             <div class="logo">StitchMaster</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
             <nav class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="garments.html">Garments</a>
@@ -18,7 +21,7 @@
                 <a href="sewing-hub.html">Sewing Hub</a>
                 <a href="machinery.html">Machinery</a>
                 <a href="about.html">About</a>
-                <a href="account.html">Account</a>
+                <a href="login.html">Login</a>
             </nav>
             <div class="nav-icons">
                 <a href="#"><i class="fas fa-search"></i></a>
@@ -30,59 +33,81 @@
         </div>
     </header>
 
-    <main class="container">
-        <h1 class="page-title">User Dashboard</h1>
+    <main>
+        <div class="container">
+            <h1 class="page-title">User Dashboard</h1>
         
         <div class="dashboard-grid">
             <aside class="dashboard-sidebar">
                 <ul>
-                    <li class="active"><i class="fas fa-user"></i> Profile</li>
-                    <li><i class="fas fa-box"></i> Orders</li>
-                    <li><i class="fas fa-heart"></i> Wishlist</li>
-                    <li><i class="fas fa-sign-out-alt"></i> Logout</li>
+                    <li class="active" data-section="profile"><i class="fas fa-user"></i> Profile</li>
+                    <li data-section="orders"><i class="fas fa-box"></i> Orders</li>
+                    <li data-section="wishlist"><i class="fas fa-heart"></i> Wishlist</li>
+                    <li id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</li>
                 </ul>
             </aside>
             <section class="dashboard-content">
-                <div class="profile-card">
-                    <h2>Welcome back, Artisan!</h2>
-                    <p>Track your orders and manage your saved items below.</p>
+                <div id="profile-section" class="tab-content active">
+                    <div class="profile-card">
+                        <h2>Welcome back, Artisan!</h2>
+                        <p>Track your orders and manage your saved items from your dashboard.</p>
+                        <div class="user-info-grid section-divider">
+                            <div class="info-group">
+                                <label>Full Name</label>
+                                <p>John Doe</p>
+                            </div>
+                            <div class="info-group">
+                                <label>Email Address</label>
+                                <p>artisan@stitchmaster.com</p>
+                            </div>
+                            <div class="info-group">
+                                <label>Member Since</label>
+                                <p>January 2024</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="order-history section-divider">
-                    <h3>Recent Orders</h3>
-                    <table class="dashboard-table">
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>#SM-9821</td>
-                                <td>Jan 15, 2026</td>
-                                <td><span class="status-delivered">Delivered</span></td>
-                                <td>$150.00</td>
-                            </tr>
-                            <tr>
-                                <td>#SM-9845</td>
-                                <td>Feb 01, 2026</td>
-                                <td><span class="status-pending">In Transit</span></td>
-                                <td>$45.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div id="orders-section" class="tab-content">
+                    <div class="order-history">
+                        <h3>Recent Orders</h3>
+                        <table class="dashboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#SM-9821</td>
+                                    <td>Jan 15, 2026</td>
+                                    <td><span class="status-delivered">Delivered</span></td>
+                                    <td>$150.00</td>
+                                </tr>
+                                <tr>
+                                    <td>#SM-9845</td>
+                                    <td>Feb 01, 2026</td>
+                                    <td><span class="status-pending">In Transit</span></td>
+                                    <td>$45.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
-                <div class="wishlist section-divider">
-                    <h3>My Wishlist</h3>
-                    <div id="wishlist-container" class="product-grid">
-                        <p>You have no saved items yet.</p>
+                <div id="wishlist-section" class="tab-content">
+                    <div class="wishlist">
+                        <h3>My Wishlist</h3>
+                        <div id="wishlist-container" class="product-grid">
+                            <p>You have no saved items yet.</p>
+                        </div>
                     </div>
                 </div>
             </section>
+        </div>
         </div>
     </main>
 

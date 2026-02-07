@@ -11,6 +11,9 @@
     <header>
         <div class="container nav-container">
             <div class="logo">StitchMaster</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
             <nav class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="garments.html">Garments</a>
@@ -18,7 +21,7 @@
                 <a href="sewing-hub.html">Sewing Hub</a>
                 <a href="machinery.html">Machinery</a>
                 <a href="about.html">About</a>
-                <a href="account.html">Account</a>
+                <a href="login.html">Login</a>
             </nav>
             <div class="nav-icons">
                 <a href="#"><i class="fas fa-search"></i></a>
@@ -30,8 +33,9 @@
         </div>
     </header>
 
-    <main class="container">
-        <h1 class="page-title">Unstitched Collection</h1>
+    <main>
+        <div class="container">
+            <h1 class="page-title">Unstitched Collection</h1>
         
         <!-- Filters -->
         <div class="filters">
@@ -46,8 +50,8 @@
         <div class="product-grid" id="fabric-grid">
             <!-- Fabric Item -->
             <div class="product-card fabric-item cotton">
-                <div class="image-container" style="aspect-ratio: 4/5; overflow: hidden; position: relative;">
-                    <img src="assets\images\Cotton.jpg" alt="Pure Cotton" class="zoom-image" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="image-container">
+                    <img src="assets\images\Cotton.jpg" alt="Pure Cotton" class="zoom-image">
                     <div class="image-overlay">
                         <h3>Pure Cotton Suiting</h3>
                         <p>High-quality breathable fabric</p>
@@ -61,8 +65,8 @@
             </div>
 
             <div class="product-card fabric-item silk">
-                <div class="image-container" style="aspect-ratio: 4/5; overflow: hidden; position: relative;">
-                    <img src="assets\images\silk fabric.jpg" alt="Raw Silk" class="zoom-image" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="image-container">
+                    <img src="assets\images\silk fabric.jpg" alt="Raw Silk" class="zoom-image">
                     <div class="image-overlay">
                         <h3>Raw Silk Fabric</h3>
                         <p>Luxurious and elegant texture</p>
@@ -76,8 +80,8 @@
             </div>
 
             <div class="product-card fabric-item linen">
-                <div class="image-container" style="aspect-ratio: 4/5; overflow: hidden; position: relative;">
-                    <img src="assets\images\linen.jpg" alt="Premium Linen" class="zoom-image" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="image-container">
+                    <img src="assets\images\linen.jpg" alt="Premium Linen" class="zoom-image">
                     <div class="image-overlay">
                         <h3>Premium Linen</h3>
                         <p>Durable and crisp finish</p>
@@ -89,6 +93,7 @@
                     <button class="add-to-cart-btn" onclick="addToCart({id: 'u3', name: 'Premium Linen', price: 40})">Add to Cart</button>
                 </div>
             </div>
+        </div>
         </div>
     </main>
 
